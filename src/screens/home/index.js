@@ -3,7 +3,7 @@ import { SafeAreaView, View, Text, ImageBackground, Image, TextInput, Pressable,
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import styles from "./styles";
-import { GRAY_DARK_COLOR, GRAY_COLOR } from "../../utils/const";
+import { GRAY_DARK_COLOR, GRAY_COLOR, RED_COLOR } from "../../utils/const";
 
 const Home = ({}) => {
     const [tab, setTab] = useState("post");
@@ -55,6 +55,17 @@ const Header = () => {
                 <Image resizeMode="cover" source={require("../../assets/img/loading.gif")} style={styles.header.icon.src} />
             </View>
             <Text style={styles.header.text}>Chạm</Text>
+            <View style={styles.header.icons}>
+                <View style={styles.header.icons.icon}>
+                    <Icon style={styles.header.icons.icon.src} name="pen" />
+                </View>
+                <View style={styles.header.icons.icon}>
+                    <Icon style={styles.header.icons.icon.src} name="plus" />
+                </View>
+                <View style={styles.header.icons.icon}>
+                    <Icon style={[styles.header.icons.icon.src, {color: RED_COLOR}]} name="arrow-right-from-bracket" />
+                </View>
+            </View>
         </View>
     );
 }

@@ -26,6 +26,25 @@ const styles = StyleSheet.create({
             fontSize: 35,
             marginLeft: 10,
             fontFamily: "SF Pro Rounded Bold",
+        },
+        icons: {
+            top: 5,
+            right: 0,
+            position: "absolute",
+            flexDirection: "row",
+            icon: {
+                width: 40,
+                height: 40,
+                padding: 10,
+                marginLeft: 10,
+                borderRadius: 30,
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: GRAY_COLOR,
+                src: {
+                    fontSize: 20,
+                }
+            }
         }
     },
     nav: {
