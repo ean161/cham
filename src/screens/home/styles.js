@@ -155,6 +155,70 @@ const styles = StyleSheet.create({
                 }
             }
         }
+    },
+    posts: {
+        post: {
+            marginTop: 10,
+            borderRadius: 10,
+            overflow: "hidden",
+            author: {
+                paddingVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                avatar: {
+                    width: 40,
+                    height: 40,
+                    marginRight: 10,
+                    borderRadius: 30,
+                },
+                title: {
+                    name: {
+                        fontSize: 16,
+                    },
+                    createdDate: {
+                        fontSize: 14,
+                        color: GRAY_DARK_COLOR,
+                    }
+                }
+            },
+            authorActions: {
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+            },
+            like: {
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+                btn: {
+                    width: 40,
+                    height: 40,
+                    padding: 10,
+                    borderRadius: 30,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: GRAY_COLOR,
+                    src: {
+                        fontSize: 20,
+                        color: GRAY_DARK_COLOR,
+                    }
+                },
+                count: {
+                    fontSize: 14,
+                    color: GRAY_DARK_COLOR,
+                    marginRight: 10,
+                }
+            },
+            attach_image: {
+                paddingTop: 10,
+                src: {
+                    width: "100%",
+                    aspectRatio: 2,
+                    resizeMode: "content",
+                    
+                }
+            }
+        },
     }
 });
 

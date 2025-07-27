@@ -5,11 +5,12 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         backgroundColor: LIGHT_COLOR,
+        paddingHorizontal: 20,
+        paddingTop: 10,
     },
     container: {
         flex: 1,
-        paddingTop: 10,
-        paddingHorizontal: 20,
+        backgroundColor: 'transparent',
     }
 });
 

@@ -4,16 +4,16 @@ import Home from "./src/screens/home/index";
 
 const App = () => {
     return (
-        <SafeAreaView style={styles.wrapper}>
-            <ImageBackground
-                source={{uri: "https://via.assets.so/img.jpg?w=400&h=1000&tc=white&bg=white"}}
-                style={styles.container}
-                resizeMode="cover"
-                // blurRadius={10}
-            >
+        <ImageBackground
+            // source={{ uri: "https://i.pinimg.com/736x/ba/7d/ff/ba7dffec14e80552f6d1ae78659b0bfd.jpg" }}
+            style={styles.wrapper}
+            resizeMode="cover"
+            blurRadius={50}
+        >
+            <SafeAreaView style={styles.container}>
                 <Home />
-            </ImageBackground>
-        </SafeAreaView>
+            </SafeAreaView>
+        </ImageBackground>
     );
 }
 
