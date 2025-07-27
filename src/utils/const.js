@@ -1,8 +1,9 @@
 const LIGHT_COLOR = "#FFFFFF";
 const DARK_COLOR = "#000000";
-const GRAY_COLOR = "#F2F2F2";
+const GRAY_COLOR = "#f2f2f291";
+const GRAY_2_COLOR = "#8e8e93";
 const BLUE_COLOR = "#0084FE";
 const RED_COLOR = "#FE294D";
 const GREEN_COLOR = "#5AD439";
 
-export { LIGHT_COLOR, DARK_COLOR, GRAY_COLOR };
+export { LIGHT_COLOR, DARK_COLOR, GRAY_COLOR, GRAY_2_COLOR };

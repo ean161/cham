@@ -1,13 +1,9 @@
 import { StyleSheet } from "react-native";
-import { DARK_COLOR, GRAY_COLOR } from "../../utils/const";
+import { DARK_COLOR, GRAY_COLOR, GRAY_2_COLOR } from "../../utils/const";
 
 const styles = StyleSheet.create({
     card: {
-        // flex: 1,
-        // marginTop: 70,
-        // borderTopLeftRadius: 40,
-        // borderTopRightRadius: 40,
-        // backgroundColor: DARK_COLOR,
+        
     },
     header: {
         flexDirection: "row",
@@ -21,15 +17,51 @@ const styles = StyleSheet.create({
             backgroundColor: GRAY_COLOR,
             overflow: "hidden",
             src: {
-                width: 100,
-                top: 3,
+                width: 250,
+                top: 10,
                 resizeMode: "contain",
             }
         },
         text: {
-            marginLeft: 16,
+            marginLeft: 10,
             fontFamily: "SF Pro Rounded Bold",
             fontSize: 35,
+        }
+    },
+    nav: {
+        marginTop: 20,
+        search: {
+            flexDirection: "row",
+            paddingVertical: 6,
+            height: 45,
+            paddingHorizontal: 10,
+            borderRadius: 15,
+            backgroundColor: GRAY_COLOR,
+            alignItems: "center",
+            icon: {
+                fontSize: 25,
+                color: GRAY_2_COLOR,
+                marginRight: 10,
+            },
+            input: {
+                fontSize: 16,
+                placeholderTextColor: "red",
+            }
+        }
+    },
+    tab: {
+        marginTop: 20,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        item: {
+            borderRadius: 30,
+            paddingVertical: 10,
+            paddingHorizontal: 25,
+            text: {
+                color: DARK_COLOR,
+                fontFamily: "SF Pro Text Bold",
+                fontSize: 20,
+            }
         }
     }
 });
