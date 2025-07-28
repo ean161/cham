@@ -2,8 +2,14 @@ import { useState, useEffect } from "react";
 import { SafeAreaView, View, Text, ImageBackground, Image, TextInput, Pressable, ScrollView } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+
+import Header from "./header";
+import Search from "./search";
+import CurrentRoom from "./current_room";
+import Tab from "./tab";
+import Posts from "./posts";
+
 import styles from "./styles";
-import { GRAY_DARK_COLOR, GRAY_COLOR, RED_COLOR, BLUE_COLOR, GREEN_COLOR } from "../../utils/const";
 
 const Home = ({}) => {
     const [tab, setTab] = useState("post");
@@ -55,163 +61,6 @@ const Home = ({}) => {
             </ScrollView>
         </View>
     )
-}
-
-const Header = () => {
-    return (
-        <View style={styles.header}>
-            <View style={styles.header.icon}>
-                <Image resizeMode="cover" source={require("../../assets/img/loading.gif")} style={styles.header.icon.src} />
-            </View>
-            <Text style={styles.header.text}>Chạm</Text>
-            <View style={styles.header.icons}>
-                <View style={styles.header.icons.icon}>
-                    <Icon style={styles.header.icons.icon.src} name="pen" />
-                </View>
-                <View style={styles.header.icons.icon}>
-                    <Icon style={styles.header.icons.icon.src} name="plus" />
-                </View>
-                <View style={styles.header.icons.icon}>
-                    <Icon style={[styles.header.icons.icon.src, {color: RED_COLOR}]} name="arrow-right-from-bracket" />
-                </View>
-            </View>
-        </View>
-    );
-}
-
-const Search = ({searchText, setSearchText}) => {
-    return (
-        <View style={styles.nav}>
-            <View style={styles.nav.search}>
-                <IonIcon name="search-outline" style={styles.nav.search.icon} />
-                <TextInput
-                    style={styles.nav.search.input}
-                    placeholderTextColor={GRAY_DARK_COLOR}
-                    placeholder="Tìm kiếm"
-                    value={searchText}
-                    onChangeText={setSearchText}
-                />
-            </View>
-        </View>
-    );
-}
-
-const Tab = ({tab, setTab}) => {
-    return (
-        <View style={styles.tab}>
-            <Pressable
-                style={[
-                    styles.tab.item,
-                    tab == "post" ? { backgroundColor: GRAY_COLOR } : {}
-                ]}
-                onPress={() => {
-                    setTab("post");
-                }}>
-                <Text style={styles.tab.item.text}>Bài đăng</Text>
-            </Pressable>
-            <Pressable
-                style={[
-                    styles.tab.item,
-                    tab == "scan" ? { backgroundColor: GRAY_COLOR } : {}
-                ]}
-                onPress={() => {
-                    setTab("scan");
-                }}>
-                <Text style={styles.tab.item.text}>Gần đây</Text>
-            </Pressable>
-            <Pressable
-                style={[
-                    styles.tab.item,
-                    tab == "room" ? { backgroundColor: GRAY_COLOR } : {}
-                ]}
-                onPress={() => {
-                    setTab("room");
-                }}>
-                <Text style={styles.tab.item.text}>Phòng</Text>
-            </Pressable>
-        </View>
-    );
-}
-
-const CurrentRoom = ({list}) => {
-    return (
-        <View style={styles.currentRoom}>
-            <View style={styles.currentRoom.title}>
-                <Text style={styles.currentRoom.title.content}>Phòng</Text>
-                <View style={styles.currentRoom.title.userCount}>
-                    <Icon style={styles.currentRoom.title.userCount.icon} name="user-group" />
-                    <Text style={styles.currentRoom.title.userCount.num}>{list.length} người</Text>
-                </View>
-            </View>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                <View style={styles.currentRoom.list}>
-                    {list.map((item, index) => {
-                        return (
-                            <View style={styles.currentRoom.list.user}>
-                                <View style={styles.currentRoom.list.user.avatar}>
-                                    <Image style={styles.currentRoom.list.user.avatar.src} source={{uri: item?.avatar}} />
-                                    <View style={styles.currentRoom.list.user.avatar.dotWrapper}>
-                                        <View style={[styles.currentRoom.list.user.avatar.dotWrapper.dot, item?.role == "creator" ? {backgroundColor: BLUE_COLOR} : {}]}></View>
-                                    </View>
-                                </View>
-                                <Text
-                                    style={styles.currentRoom.list.user.name}
-                                    numberOfLines={1}
-                                    ellipsizeMode="tail"
-                                >
-                                    {item?.name}
-                                </Text>
-                            </View>
-                        );
-                    })}
-                </View>
-            </ScrollView>
-        </View>
-    );
-}
-
-const Posts = ({posts, setPosts}) => {
-    const handleLike = (index) => {
-        const updatedPosts = [...posts];
-        updatedPosts[index].isLiked = !updatedPosts[index].isLiked;
-        updatedPosts[index].likes = updatedPosts[index].likes + 1;
-        setPosts(updatedPosts);
-    };
-    return (
-        <View style={styles.posts}>
-            {posts.map((item, index) => {
-                if (item?.caption == null)
-                    return null;
-
-                return (
-                    <View style={styles.posts.post} key={index}>
-                        <View style={styles.posts.post.authorActions}>
-                            <View style={styles.posts.post.author}>
-                                <Image source={{uri: item?.avatar}} style={styles.posts.post.author.avatar} />
-                                <View style={styles.posts.post.author.title}>
-                                    <Text style={styles.posts.post.author.title.name}>{item?.name}</Text>
-                                    <Text style={styles.posts.post.author.title.createdDate}>3 ngày trước</Text>
-                                </View>
-                            </View>
-                            <View style={styles.posts.post.like}>
-                                <Text style={styles.posts.post.like.count}>{item?.likes} cỏ</Text>
-                                <Pressable
-                                    style={styles.posts.post.like.btn}
-                                    onPress={() => handleLike(index)}
-                                >
-                                    <Icon style={[styles.posts.post.like.btn.src, posts[index]?.isLiked == true ? {color: GREEN_COLOR} : {}]} name="clover" />
-                                </Pressable>
-                            </View>
-                        </View>
-                        <Text>{item?.caption}</Text>
-                        <View style={styles.posts.post.attach_image}>
-                            {item?.attach_image ? <Image style={styles.posts.post.attach_image.src} source={{uri: item?.attach_image}} /> : null}
-                        </View>
-                    </View>
-                );
-            })}
-        </View>
-    );
 }
 
 export default Home;
